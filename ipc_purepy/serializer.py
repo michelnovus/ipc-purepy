@@ -4,9 +4,11 @@ import json
 import unittest
 from typing import Union, Any
 
-PyCoreObject = Union[
-    dict[str, "PyCoreObject"], list["PyCoreObject"], str, int, float, bool, None
-]
+PyCoreObject = Union[dict[str, Any], list, str, int, float, bool, None]
+"""dict and list types recursively accept only PyCoreObject type values.
+
+Look is_pycoreobject function to check types.
+"""
 
 
 def is_pycoreobject(object: Any) -> bool:
@@ -65,8 +67,7 @@ def deserialize(data: bytes, strict: bool = True) -> PyCoreObject:
 
 
 class TestSerializer(unittest.TestCase):
-    def __init__(self, methodName: str = "runTest") -> None:
-        super().__init__(methodName)
+    def setUp(self):
         self._python_data = (
             {"DA": 12, "TO": None, "22": True, "KEY": {"b": None, "0.1": True}},
             ["data", "chik", "foo", 922, None, True, False, "nada"],
