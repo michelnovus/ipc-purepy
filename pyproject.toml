@@ -7,7 +7,7 @@ name = "ipc-purepy"
 dynamic = ["version"]
 requires-python = ">=3.11"
 authors = [{ name = "Michel Novus", email = "michelnovus@gmail.com" }]
-description = "Allows sending primitive objects between two independent Python processes in a simple way."
+description = "Allow sent core Python objects between two likely independent Python processes using UNIX sockets."
 readme = "README.md"
 license = { file = "LICENSE" }
 keywords = [

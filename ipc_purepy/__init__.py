@@ -30,7 +30,7 @@ PyCoreObject to the client if the connection is alive.
 Client endpoint to communicate with the server socket, send data to 
 server socket and expect receive a response from it.
 
-## Example:
+## Example: (execute directly with $python3 -m ipc_purepy.example)
 # --------------------------------------------------------------------------- #
 from time import sleep
 from threading import Thread
