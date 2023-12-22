@@ -16,12 +16,10 @@ class Server(object):
     def __init__(
         self,
         socket_path: str,
-        timeout: float = 1.0,
         buffer_size: int = 65536,
     ) -> None:
         self.socket_path = socket_path
         self.buffer_size = buffer_size
-        self.timeout = timeout
         self._instance_in_context = False
         self._socket: Union[socket.socket, None] = None
         self._connection: Union[socket.socket, None] = None
@@ -30,7 +28,6 @@ class Server(object):
         if os.path.exists(self.socket_path):
             raise FileExistsError(f"socket {self.socket_path} already exists")
         self._socket = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        self._socket.settimeout(self.timeout)
         self._socket.bind(self.socket_path)
         self._socket.listen(1)
         self._instance_in_context = True
@@ -103,7 +100,7 @@ def communicate(
 # ----------------------------------------------------------------------
 
 
-class TestIpc(unittest.TestCase):
+class _TestIpc(unittest.TestCase):
     def setUp(self):
         time.sleep(0.05)  # Delay in opening and closing sockets between tests.
         self.socket_file = "/tmp/ipc_purepy.socket"

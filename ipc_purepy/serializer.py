@@ -66,7 +66,7 @@ def deserialize(data: bytes, strict: bool = True) -> PyCoreObject:
 # ----------------------------------------------------------------------
 
 
-class TestSerializer(unittest.TestCase):
+class _TestSerializer(unittest.TestCase):
     def setUp(self):
         self._python_data = (
             {"DA": 12, "TO": None, "22": True, "KEY": {"b": None, "0.1": True}},
